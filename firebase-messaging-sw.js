@@ -9,6 +9,8 @@ importScripts('https://www.gstatic.com/firebasejs/5.8.4/firebase-messaging.js');
 
   const messaging = firebase.messaging();
   messaging.setBackgroundMessageHandler(function( payload){
+    var snd = new Audio('sound/alerta.mp3');
+    snd.play();
   //   console.log('[firebase-messaging-sw.js] Received background message ', payload);
   //   // // Customize notification here
     var notificationTitle = 'Background Message Title';
