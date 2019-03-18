@@ -41,7 +41,7 @@
     return messaging.getToken();
   }).then(function (token) {
         console.log(token);
-        firebase.database().ref('tokens/').set({
+        firebase.database().ref('tok/').set({
           token: token,
         }, function(error) {
           if (error) {
