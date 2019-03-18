@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
+    <link rel="manifest" href="/manifest.json">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
@@ -40,14 +42,14 @@
   }).then(function (token) {
         console.log(token);
         firebase.database().ref('tokens/').set({
-            token: token,
-          }, function(error) {
-            if (error) {
-              // The write failed...
-            } else {
-              // Data saved successfully!
-            }
-          });
+          token: token,
+        }, function(error) {
+          if (error) {
+            // The write failed...
+          } else {
+            // Data saved successfully!
+          }
+        });
   }).catch(function (err) {
      console.log('No quiere'); 
   });
