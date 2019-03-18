@@ -26,11 +26,11 @@
     messagingSenderId: "110859357842"
   };
   firebase.initializeApp(config);
-  const messaging = firebase.messaging();
+  const messaging;
   
-  navigator.serviceWorker.register('/firebase-messaging-sw.js')
+  navigator.serviceWorker.register('./firebase-messaging-sw.js')
   .then((registration) => {
-    messaging.useServiceWorker(registration);
+    messaging=firebase.messaging().useServiceWorker(registration);
   });
 
 
