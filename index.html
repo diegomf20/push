@@ -38,16 +38,19 @@
     console.log("Have Permise");    
     return messaging.getToken();
   }).then(function (token) {
-      console.log(token);
+        console.log(token);
+        firebase.database().ref('tokens/').set({
+            token: token,
+          }, function(error) {
+            if (error) {
+              // The write failed...
+            } else {
+              // Data saved successfully!
+            }
+          });
   }).catch(function (err) {
      console.log('No quiere'); 
   });
-  // FirebaseMessaging.getInstance().subscribeToTopic("all");
-
-
-//   messaging.onMessage(function (params) {
-//       console.log(params);
-//   });
 </script>
 
 </body>
