@@ -13,6 +13,26 @@
     
 <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
 <script>
+  if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('firebase-messaging.js').then(function(reg) {
+    console.log('Service Worker Registered!', reg);
+
+    reg.pushManager.getSubscription().then(function(sub) {
+      if (sub === null) {
+        // Update UI to ask user to register for Push
+        console.log('Not subscribed to push service!');
+      } else {
+        // We have a subscription, update the database
+        console.log('Subscription object: ', sub);
+      }
+    });
+  })
+   .catch(function(err) {
+    console.log('Service Worker registration failed: ', err);
+  });
+}
+</script>
+<script>
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyBrtSSsA9nMF3Uj4hVDJ7lwHnIUAwJXrNg",
